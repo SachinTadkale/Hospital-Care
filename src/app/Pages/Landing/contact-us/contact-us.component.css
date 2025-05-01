@@ -1,0 +1,137 @@
+.head-banner img {
+  height: 700px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.head-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 3em auto;
+  gap: 21px;
+}
+
+.head-title .sub-heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #282938;
+}
+
+.head-title .heading {
+  font-size: 64px;
+  font-weight: 600;
+  color: #333333;
+}
+
+.head-title .secondary-sub-heading {
+  font-size: 24px;
+  color: #555555;
+}
+
+.contact-us-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2em 0;
+}
+
+form {
+  width: 1024px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+}
+
+input,
+select,
+textarea {
+  box-sizing: border-box;
+  outline: none;
+  font-weight: 400;
+  background-color: transparent;
+  border: 1.5px solid #007E85;
+  border-radius: 8px;
+  width: 100%;
+  height: 45px;
+  font-size: 1.1em;
+  padding: 10px;
+  color: #282938;
+}
+
+input::placeholder,
+textarea::placeholder {
+  font-weight: 400;
+  color: #282938;
+}
+
+label {
+  font-size: 1.1em;
+  padding: 10px 0;
+  color: #282938;
+  font-weight: 400;
+  text-align: left;
+}
+
+textarea {
+  height: 250px;
+  resize: vertical;
+}
+
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23007E85" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position-x: 98%;
+  background-position-y: center;
+}
+.terms-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0; 
+}
+
+.terms-check input {
+  margin: 0 0 0 10px;
+  width: 15px;
+  height: 15px;
+}
+
+.terms-check label {
+  font-size: 16px;
+  color: #282938;
+}
+.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#submit-btn{
+  height: 50px;
+  width: 286px;
+  margin: 1em 0 .5em 0;
+  background-color: #007E85;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  transition: all .2s ease-in-out;
+}
+#submit-btn:hover{
+  background-color: #007278;
+  cursor: pointer;
+}

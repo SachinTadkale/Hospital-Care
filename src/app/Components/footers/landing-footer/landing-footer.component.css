@@ -1,0 +1,156 @@
+.footer {
+  background-color: #00838f;
+  color: white;
+  padding: 60px 30px;
+  font-family: "DM Sans", sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+  gap: 30px;
+}
+
+/* Brand Section */
+.footer-section.brand {
+  flex: 1 1 250px;
+  margin-bottom: 30px;
+}
+
+.brand-logo-text {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.logo {
+  height: 40px;
+  /* object-fit: contain; */
+}
+
+.brand-name {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Links Section */
+.footer-section.links {
+  display: flex;
+  flex: 3 1 700px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.column {
+  flex: 1 1 160px;
+  margin-bottom: 20px;
+}
+
+.column h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+.column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.column ul li {
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.column ul li a {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.column ul li a::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0%;
+  height: 1px;
+  border-radius: 10px;
+  background-color: #fff;
+  transform-origin: center;
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+.column ul li a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+/* Social Links */
+.social-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.social-links li {
+  margin: 10px 0;
+}
+
+.social-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #ffe082;
+}
+
+.social-links img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.social-links a:hover img {
+  transform: scale(1.2);
+}
+
+/* Copyright */
+.footer .copyright {
+  font-size: 13px;
+  margin-top: 10px;
+  line-height: 1.5;
+  color: #e0f7fa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-section.links {
+    flex-direction: column;
+  }
+
+  .column {
+    width: 100%;
+  }
+}

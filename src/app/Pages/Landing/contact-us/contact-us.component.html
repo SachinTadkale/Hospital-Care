@@ -1,0 +1,77 @@
+<div class="contact-us-container">
+  <div class="head-banner">
+    <img src="../../../../assets/contact-us-banner.jpg" alt="" />
+  </div>
+  <div class="head-title">
+    <div class="sub-heading">Get In Touch</div>
+    <div class="heading">Contact Us</div>
+    <div class="secondary-sub-heading">
+      Have questions or need assistance? We're here to help!
+    </div>
+  </div>
+  <div class="contact-us-form">
+    <form>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input
+            type="text"
+            name="first-name"
+            placeholder="Enter Your First Name"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input
+            type="text"
+            name="last-name"
+            placeholder="Enter Your Last Name"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter Your Email"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone-number">Phone Number</label>
+          <input
+            type="number"
+            name="number"
+            placeholder="Enter Your Phone Number"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group topic-container">
+        <label for="topic" style="text-align: left;">Choose a topic</label>
+        <select name="topic" id="topic" required>
+          <option value="" selected disabled>Choose one...</option>
+        </select>
+      </div>
+      <div class="form-group message-container">
+        <label for="message">Message</label>
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Type your message..."
+        ></textarea>
+      </div>
+      <!-- <div class="terms-check">
+        <input type="checkbox" id="terms" required>
+        <label for="terms">I accept the terms</label>
+      </div> -->
+      <div class="btn">
+        <button type="submit" id="submit-btn">Submit</button>
+      </div>      
+    </form>
+  </div>
+</div>
