@@ -42,4 +42,5 @@ export class OurSerivcesCardComponent {
       content: `Complete eye care services from vision tests to advanced treatments and surgeries.`,
     },
   ];
+testimonials: any;
 }

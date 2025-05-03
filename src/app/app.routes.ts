@@ -23,7 +23,7 @@ export const routes: Routes = [
         pathMatch: 'full',
         loadComponent: () => {
           return import('./Pages/Landing/services/services.component').then(
-            (m) => m.ServicesComponent
+            (m) => m.OurSerivcesCardComponent
           );
         },
       },
@@ -33,7 +33,7 @@ export const routes: Routes = [
         loadComponent: () => {
           return import(
             './Pages/Landing/testimonials/testimonials.component'
-          ).then((m) => m.TestimonialsComponent);
+          ).then((m) => m.TestimonialCardComponent);
         },
       },
       {

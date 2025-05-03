@@ -1,1 +1,46 @@
-<p>services works!</p>
+<section class="services-section">
+  <h2 class="services-title">Services we provide</h2>
+  <p class="services-description">
+    Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalar<br />
+    elementum tempus hac tellus libero accumsan.
+  </p>
+</section>
+
+<div class="card-container">
+  <div class="service-card" *ngFor="let service of Services">
+    <div class="card-image">
+      <img [src]="service.ImageUrl" />
+    </div>
+    <div class="card-content">
+      <div class="title">{{service.title}}</div>
+      <div class="content">
+        {{service.content}}
+      </div>
+      <div class="learn-more">
+        <a href="#">Learn more </a>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="testimonial-section">
+  <h2 class="testimonial-title">what our customers say</h2>
+  <p class="testimonial-description">
+    Problems trying to resolve the conflict between the two major realms of <br />
+    Classical physics: Newtonian mechanics
+  </p>
+
+  <div class="testimonial-container">
+    <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+      <div class="stars">
+        <span *ngFor="let star of [1,2,3,4]">⭐</span>
+        <span>☆</span> <!-- Represents a 4-star rating -->
+      </div>
+      <p class="testimonial-text">
+        {{testimonial.feedback}}
+      </p>
+      <div class="testimonial-user">
+        <img src="../../../../assets/doctor Images/andy.png" alt="User photo" class="user-img" />
+      </div>
+    </div>
+  </div>
+</section>
