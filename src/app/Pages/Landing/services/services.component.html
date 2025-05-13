@@ -1,46 +1,33 @@
-<section class="services-section">
-  <h2 class="services-title">Services we provide</h2>
-  <p class="services-description">
-    Lorem ipsum dolor sit amet consectetur adipiscing elit semper dalar<br />
-    elementum tempus hac tellus libero accumsan.
+<!-- 🏥 Hospital Amenities Section -->
+<div class="section-title" *ngIf="selectedSection === 'facilities'">
+  <h2>Hospital Amenities</h2>
+  <p class="section-description">
+    Discover the range of amenities designed to enhance your comfort during your stay. 
+    From room features to dining and connectivity, every detail is made for your well-being.
   </p>
-</section>
+</div>
 
-<div class="card-container">
-  <div class="service-card" *ngFor="let service of Services">
-    <div class="card-image">
-      <img [src]="service.ImageUrl" />
-    </div>
-    <div class="card-content">
-      <div class="title">{{service.title}}</div>
-      <div class="content">
-        {{service.content}}
-      </div>
-      <div class="learn-more">
-        <a href="#">Learn more </a>
-      </div>
-    </div>
+<div class="card-grid" *ngIf="selectedSection === 'facilities'">
+  <div class="card" *ngFor="let item of facilities">
+    <iframe [src]="item.videoUrl" frameborder="0" allowfullscreen></iframe>
+    <h3>{{ item.title }}</h3>
+    <p [innerText]="item.description"></p>
   </div>
 </div>
-<section class="testimonial-section">
-  <h2 class="testimonial-title">what our customers say</h2>
-  <p class="testimonial-description">
-    Problems trying to resolve the conflict between the two major realms of <br />
-    Classical physics: Newtonian mechanics
-  </p>
 
-  <div class="testimonial-container">
-    <div class="testimonial-card" *ngFor="let testimonial of testimonials">
-      <div class="stars">
-        <span *ngFor="let star of [1,2,3,4]">⭐</span>
-        <span>☆</span> <!-- Represents a 4-star rating -->
-      </div>
-      <p class="testimonial-text">
-        {{testimonial.feedback}}
-      </p>
-      <div class="testimonial-user">
-        <img src="../../../../assets/doctor Images/andy.png" alt="User photo" class="user-img" />
-      </div>
-    </div>
+<!-- 💆‍♀️ Skin & Aesthetics Section -->
+<div class="section-title" *ngIf="selectedSection === 'beauty'">
+  <h2>Skin & Aesthetics</h2>
+  <p class="section-description">
+    Explore our advanced beauty and skincare services tailored to refresh, rejuvenate, and enhance your natural glow.
+    Designed for visible results and long-term care.
+  </p>
+</div>
+
+<div class="card-grid" *ngIf="selectedSection === 'beauty'">
+  <div class="card" *ngFor="let item of beautyTreatments">
+    <iframe [src]="item.videoUrl" frameborder="0" allowfullscreen></iframe>
+    <h3>{{ item.title }}</h3>
+    <p [innerText]="item.description"></p>
   </div>
-</section>
+</div>

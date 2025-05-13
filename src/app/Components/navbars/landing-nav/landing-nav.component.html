@@ -2,12 +2,34 @@
   <div class="logo">
     <img src="../../../../assets/logo/logo.png" width="180px" />
   </div>
-  <div class="nav-links">
+  <div class="nav-links"> 
     <ul>
-      <li><a routerLink="/">home</a></li>
-      <li><a routerLink="/services">Services</a></li>
+      <li><a routerLink="/">Home</a></li>
+      <li><a routerLink="/treatments">Our Treatments</a></li>
+
+        <li class="dropdown" (click)="toggleServicesDropdown()">
+  <span class="dropdown-toggle">Services ⏷</span>
+  <ul class="dropdown-menu" *ngIf="servicesDropdownVisible">
+    <li (click)="handleServicesClick('facilities')">Hospital Amenities</li>
+    <li (click)="handleServicesClick('beauty')">Skin & Aesthetics</li>
+  </ul>
+</li>
+
+
       <li><a href="/testimonials">Testimonials</a></li>
       <li><a href="/contactus">Contact Us</a></li>
+      
+    <li class="dropdown" (click)="toggleDropdown()">
+  <span class="dropdown-toggle">Schemes ⏷</span>
+  <ul class="dropdown-menu" *ngIf="dropdownVisible">
+    <li *ngFor="let scheme of schemes">
+      <a [routerLink]="['/scheme', scheme.id]">{{ scheme.name }}</a>
+    </li>
+  </ul>
+</li>
+
+
+
     </ul>
   </div>
   <div class="nav-links auth-links">

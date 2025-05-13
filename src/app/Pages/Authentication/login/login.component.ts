@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../../Services/Authentication/authentication-service.service';
 
@@ -10,23 +10,44 @@ import { AuthenticationService } from '../../../Services/Authentication/authenti
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
   message: string = '';
+  redirectTo: string | null = null;
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
+  ngOnInit(): void {
+  this.redirectTo = this.route.snapshot.queryParamMap.get('redirectTo');
+  console.log('BookAppointmentComponent loaded');
+
+}
+
+
   login(): void {
-    this.message = this.authService.login(this.email, this.password);
-     if (this.message === 'Login successful') {
-      alert(this.message);
-      this.router.navigate(['/patient-dashboard']);
+  const trimmedEmail = this.email.trim();
+  const trimmedPassword = this.password.trim();
+
+  this.message = this.authService.login(trimmedEmail, trimmedPassword);
+
+  if (this.message === 'Login successful') {
+    alert(this.message);
+
+    if (this.redirectTo) {
+      // Convert 'patient-dashboard/book-appointment' to a navigation array
+      this.router.navigate(this.redirectTo.split('/'));
     } else {
-      alert('Invalid Credentials');
+      // Default to patient dashboard
+      this.router.navigate(['/patient-dashboard']);
     }
+  } else {
+    alert(this.message); // Invalid credentials
   }
+}
+
 }

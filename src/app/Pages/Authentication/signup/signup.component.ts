@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { AuthenticationService } from '../../../Services/Authentication/authentication-service.service';
+
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [RouterLink, FormsModule, CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css',
+  styleUrl: './signup.component.css'
 })
 export class SignupComponent {
   step: number = 1;
@@ -26,6 +28,11 @@ export class SignupComponent {
     emergency_contact: '',
     address: ''
   };
+
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) {}
 
   nextStep() {
     if (this.step === 1) {
@@ -54,11 +61,14 @@ export class SignupComponent {
 
   onSubmit(form: any) {
     if (form.valid) {
-      localStorage.setItem('patientData', JSON.stringify(this.patient));
-      alert('Registration successful!');
-      console.log('Stored Data:', this.patient);
-      form.reset();
-      this.step = 1;
+      const message = this.authService.signup(this.patient);  // ✅ Uses service now
+      alert(message);
+
+      if (message === 'Signup successful') {
+        form.reset();
+        this.step = 1;
+        this.router.navigate(['/login']);
+      }
     } else {
       alert('Please complete the form correctly.');
     }

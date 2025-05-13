@@ -7,22 +7,24 @@
       Dashboard
     </li>
     <li
-      [ngClass]="{ active: activeItem === 'Book Appointment' }"
-      (click)="onItemClick('Book Appointment')"
+      [ngClass]="{ active: activeItem === 'Profile' }"
+      (click)="onItemClick('Profile')"
     >
-      Book Appointment
+      Profile
     </li>
     <li
-      [ngClass]="{ active: activeItem === 'Doctors Availability' }"
-      (click)="onItemClick('Doctors Availability')"
+      [ngClass]="{ active: activeItem === 'Medical History' }"
+      (click)="onItemClick('Medical History')"
     >
-      Doctor's Availability
+      Medical History
     </li>
+    
     <li
       [ngClass]="{ active: activeItem === 'Patient Reports' }"
       (click)="onItemClick('Patient Reports')"
     >
       Patient Reports
     </li>
+    
   </ul>
 </div>

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="main-content">
   <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
     <h2>Book Appointment</h2>
 
@@ -15,7 +15,7 @@
     <input id="time" formControlName="time" type="time" required />
 
     <label for="message">Message</label>
-    <textarea id="message" formControlName="message"></textarea>
+    <textarea id="message" formControlName="message" rows="3"></textarea>
 
     <button type="submit">Book Now</button>
   </form>
