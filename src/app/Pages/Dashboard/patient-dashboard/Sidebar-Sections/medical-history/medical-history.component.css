@@ -1,0 +1,51 @@
+.main-content {
+    margin-left: 22%;
+    margin-top: 100px;
+    padding: 30px;
+    box-sizing: border-box;
+  }
+  
+  .medical-history {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .medical-history h2 {
+    font-size: 24px;
+    color: #007e85;
+    margin-bottom: 20px;
+  }
+  
+  .history-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+  }
+  
+  .history-list li {
+    background: #ffffff;
+    border-left: 5px solid #007e85;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+  }
+  
+  .history-list span {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+  }
+  
+  .add-btn {
+    padding: 10px 20px;
+    background-color: #007e85;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  

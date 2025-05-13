@@ -15,25 +15,30 @@ export class PatientDashboardSidebarComponent {
   constructor(private router: Router) {}
 
   onItemClick(item: string): void {
+    this.activeItem = item;
+
     switch (item) {
       case 'Dashboard':
-        this.router.navigate(['patient-dashboard/']);
-        this.activeItem = item; // Set the clicked item as active
+        this.router.navigate(['patient-dashboard']);
         break;
-      case `Doctors Availability`:
-        this.router.navigate(['patient-dashboard/doctors-availability']);
-        this.activeItem = item; // Set the clicked item as active
+      case 'Profile':
+        this.router.navigate(['patient-dashboard/profile']);
         break;
-      case 'Book Appointment':
-        this.router.navigate(['patient-dashboard/book-appointment']);
-        this.activeItem = item; // Set the clicked item as active
+      case 'Medical History':
+        this.router.navigate(['patient-dashboard/medical-history']);
+        break;
+      case 'Prescriptions':
+        this.router.navigate(['patient-dashboard/prescriptions']);
         break;
       case 'Patient Reports':
         this.router.navigate(['patient-dashboard/patient-reports']);
-        this.activeItem = item; // Set the clicked item as active
+        break;
+      case 'Billing':
+        this.router.navigate(['patient-dashboard/billing']);
         break;
       default:
-        console.log('Unknown menu item clicked.');
+        console.warn('Unknown menu item clicked:', item);
+        break;
     }
   }
 }

@@ -188,3 +188,16 @@ margin-top: 20px;
   align-items: center;
   justify-content: center;
 }
+
+
+
+#book-appointment-btn {
+  position: relative;
+  z-index: 10;
+}
+
+#doc-img {
+  z-index: 1;
+  position: relative;
+}
+

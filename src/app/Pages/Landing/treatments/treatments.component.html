@@ -1,0 +1,28 @@
+<section class="services-section">
+  <h2 class="services-title">Our Treatment Specialties</h2>
+<p class="services-description">
+  We offer a wide range of specialized treatments designed to meet your health needs — 
+  from advanced dental care and cardiology to orthopedics, eye care, and diagnostics. 
+  Each treatment is delivered by expert medical professionals using state-of-the-art technology to ensure the highest quality care.
+</p>
+</section>
+
+<div class="card-container">
+  <div class="service-card" *ngFor="let service of Services">
+    <div class="card-video">
+      <div class="video-wrapper">
+        
+          <iframe [src]="getSafeUrl(service.videoId)" allowfullscreen></iframe>
+
+
+          
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="title">{{ service.title }}</div>
+      <div class="content">{{ service.content }}</div>
+      
+    </div>
+  </div>
+</div>
+

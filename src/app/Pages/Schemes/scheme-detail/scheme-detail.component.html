@@ -1,0 +1,24 @@
+<div [ngClass]="{'scheme-bg': true, 'janani-bg': scheme?.name === 'Janani Suraksha Yojana'}">
+  <div class="scheme-page" *ngIf="scheme">
+    <h2>{{ scheme.name }}</h2>
+    <p><strong>Description:</strong> {{ scheme.description }}</p>
+    <p><strong>Eligibility:</strong> {{ scheme.eligibility }}</p>
+    <p><strong>Benefits:</strong> {{ scheme.benefits }}</p>
+
+    <hr />
+
+    <h3>Apply for This Scheme</h3>
+    <form (ngSubmit)="submitForm()">
+      <label>Full Name</label>
+      <input [(ngModel)]="userForm.fullName" name="fullName" required />
+
+      <label>Aadhaar Number</label>
+      <input [(ngModel)]="userForm.aadhaar" name="aadhaar" required />
+
+      <label>Upload Income Proof</label>
+      <input type="file" (change)="onFileSelected($event)" />
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</div>

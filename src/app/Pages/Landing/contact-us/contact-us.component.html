@@ -1,7 +1,10 @@
 <div class="contact-us-container">
+  <!-- Banner Section -->
   <div class="head-banner">
-    <img src="../../../../assets/contact-us-banner.jpg" alt="" />
+    <img src="../../../../assets/contact-us-banner.jpg" alt="Contact Us Banner" />
   </div>
+
+  <!-- Heading Section -->
   <div class="head-title">
     <div class="sub-heading">Get In Touch</div>
     <div class="heading">Contact Us</div>
@@ -9,6 +12,8 @@
       Have questions or need assistance? We're here to help!
     </div>
   </div>
+
+  <!-- Contact Form Section -->
   <div class="contact-us-form">
     <form>
       <div class="form-row">
@@ -31,6 +36,7 @@
           />
         </div>
       </div>
+
       <div class="form-row">
         <div class="form-group">
           <label for="email">Email</label>
@@ -51,12 +57,18 @@
           />
         </div>
       </div>
+
       <div class="form-group topic-container">
-        <label for="topic" style="text-align: left;">Choose a topic</label>
+        <label for="topic">Choose a topic</label>
         <select name="topic" id="topic" required>
           <option value="" selected disabled>Choose one...</option>
+          <option value="general">General Inquiry</option>
+          <option value="appointment">Book an Appointment</option>
+          <option value="feedback">Feedback</option>
+          <option value="support">Support</option>
         </select>
       </div>
+
       <div class="form-group message-container">
         <label for="message">Message</label>
         <textarea
@@ -65,13 +77,28 @@
           placeholder="Type your message..."
         ></textarea>
       </div>
-      <!-- <div class="terms-check">
-        <input type="checkbox" id="terms" required>
-        <label for="terms">I accept the terms</label>
-      </div> -->
+
       <div class="btn">
         <button type="submit" id="submit-btn">Submit</button>
-      </div>      
+      </div>
     </form>
+  </div>
+
+  <!-- Map Section -->
+  <div class="map-section">
+    <h3>Our Location</h3>
+    <p>Visit us at our facility. We’re here to welcome you and provide the care you need.</p>
+    <div class="map-container">
+      <iframe
+        width="100%"
+        height="400"
+        frameborder="0"
+        style="border:0"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0206041225566!2d-122.42177868468054!3d37.774929279758716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808e1cb26ef5%3A0x3dc20b881538839e!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1624034507976!5m2!1sen!2sus">
+      </iframe>
+    </div>
   </div>
 </div>

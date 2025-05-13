@@ -3,6 +3,7 @@ import { LandingNavComponent } from '../../../Components/navbars/landing-nav/lan
 import { RouterOutlet } from '@angular/router';
 import { LandingFooterComponent } from '../../../Components/footers/landing-footer/landing-footer.component';
 
+
 @Component({
   selector: 'app-landing-layout',
   standalone: true,

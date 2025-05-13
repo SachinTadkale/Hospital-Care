@@ -1,0 +1,117 @@
+.scheme-bg {
+  position: relative;
+  background-image: url('https://dashboard.swarajdigital.in/storage/app/uploads/public/66e/2c1/d70/66e2c1d700d56069825446.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 80px 20px;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 0;
+}
+
+.scheme-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white overlay */
+  z-index: 1;
+}
+
+.scheme-bg.janani-bg {
+  background-image: url('https://i0.wp.com/pmsuryagharr.in/wp-content/uploads/2024/03/Janani-Suraksha-Yojana-1.png?resize=978.75%2C514');
+}
+
+.scheme-page {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.95);
+  margin: 0 auto;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+
+/* Additional styles remain unchanged */
+
+.scheme-page h2 {
+  font-size: 24px;
+  color: #007e85;
+  margin-bottom: 15px;
+}
+
+.scheme-page p {
+  font-size: 15px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+hr {
+  margin: 25px 0;
+  border: none;
+  border-top: 1px solid #ddd;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  color: #333;
+}
+
+input[type="text"],
+input[type="file"],
+input[type="number"],
+textarea {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+}
+
+input[type="file"] {
+  background-color: #fff;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: #007e85;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  margin-right: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  padding: 12px 20px;
+  background-color: #007e85;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button[type="submit"]:hover {
+  background-color: #005f67;
+}
+@media (max-width: 768px) {
+  .scheme-page {
+    margin: 80px 20px;
+    padding: 20px;
+  }
+}

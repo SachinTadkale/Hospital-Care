@@ -1,7 +1,11 @@
 import { Routes } from '@angular/router';
 
+
+
+
 export const routes: Routes = [
   {
+    
     path: '',
     loadComponent: () => {
       return import(
@@ -23,7 +27,16 @@ export const routes: Routes = [
         pathMatch: 'full',
         loadComponent: () => {
           return import('./Pages/Landing/services/services.component').then(
-            (m) => m.OurSerivcesCardComponent
+            (m) =>m.ServicesComponent
+          );
+        },
+      },
+      {
+        path: 'treatments',
+        pathMatch: 'full',
+        loadComponent: () => {
+          return import('./Pages/Landing/treatments/treatments.component').then(
+            (m) => m.TreatmentsComponent
           );
         },
       },
@@ -68,6 +81,12 @@ export const routes: Routes = [
 
   // <------------------------------ Dashboard ------------------------------>
   {
+  path: 'book-appointment',
+  loadComponent: () => import(
+    './Pages/Dashboard/patient-dashboard/Sidebar-Sections/book-appointment/book-appointment.component'
+  ).then((m) => m.BookAppointmentComponent),
+},
+  {
     path: 'patient-dashboard',
     loadComponent: () => {
       return import(
@@ -75,6 +94,8 @@ export const routes: Routes = [
       ).then((m) => m.PatientDashboardComponent);
     },
     children: [
+      
+  
       {
         path: '',
         pathMatch: 'full',
@@ -85,23 +106,25 @@ export const routes: Routes = [
         },
       },
       {
-        path: 'book-appointment',
+        path: 'profile',
         pathMatch: 'full',
         loadComponent: () => {
           return import(
-            './Pages/Dashboard/patient-dashboard/Sidebar-Sections/book-appointment/book-appointment.component'
-          ).then((m) => m.BookAppointmentComponent);
+            './Pages/Dashboard/patient-dashboard/Sidebar-Sections/profile/profile.component'
+          ).then((m) => m.ProfileComponent);
         },
       },
+        
       {
-        path: 'doctors-availability',
+        path: 'medical-history',
         pathMatch: 'full',
         loadComponent: () => {
           return import(
-            './Pages/Dashboard/patient-dashboard/Sidebar-Sections/doctors-availability/doctors-availability.component'
-          ).then((m) => m.DoctorsAvailabilityComponent);
+            './Pages/Dashboard/patient-dashboard/Sidebar-Sections/medical-history/medical-history.component'
+          ).then((m) => m.MedicalHistoryComponent);
         },
       },
+      
       {
         path: 'patient-reports',
         pathMatch: 'full',
@@ -110,7 +133,17 @@ export const routes: Routes = [
             './Pages/Dashboard/patient-dashboard/Sidebar-Sections/patient-reports/patient-reports.component'
           ).then((m) => m.PatientReportsComponent);
         },
-      },
-    ],
+      }
+    
+    ]
   },
+  {
+    path: 'scheme/:id',
+    loadComponent: () =>
+      import('./Pages/Schemes/scheme-detail/scheme-detail.component')
+        .then(m => m.SchemeDetailComponent)
+  }
 ];
+  
+  
+    
