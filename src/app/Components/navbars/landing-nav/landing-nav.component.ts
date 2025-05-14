@@ -44,6 +44,11 @@ export class LandingNavComponent {
   handleServicesClick(section: 'facilities' | 'beauty'): void {
   this.router.navigate(['/services'], { fragment: section });
 }
+accountDropdownVisible = false;
+
+toggleAccountDropdown(): void {
+  this.accountDropdownVisible = !this.accountDropdownVisible;
+}
 
 
 }

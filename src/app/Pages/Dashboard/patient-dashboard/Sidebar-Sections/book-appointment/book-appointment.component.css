@@ -1,34 +1,82 @@
-.main-content {
-  margin-left: 22%;
-  margin-top: 100px;
-  padding: 20px;
+.appointment-container {
+  max-width: 860px;
+  margin: 40px auto;
+  background: #f5f5f5;
+  padding: 30px;
+  border-radius: 12px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  font-size: 28px;
+  color: #007e85;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 form {
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-  display: block;
-  margin: 10px 0 4px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
 }
 
-input, textarea {
-  width: 100%;
+input, select, textarea {
   padding: 10px;
-  margin-bottom: 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #007e85;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-wrapper {
+  text-align: center;
 }
 
 button {
-  padding: 10px 20px;
   background-color: #007e85;
-  color: #fff;
+  color: white;
   border: none;
-  border-radius: 6px;
+  padding: 14px 40px;
+  border-radius: 8px;
+  font-size: 1rem;
   cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background-color: #006a73;
 }
