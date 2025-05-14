@@ -1,39 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-book-appointment',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './book-appointment.component.html',
-  styleUrl: './book-appointment.component.css',
+  styleUrls: ['./book-appointment.component.css']
 })
-export class BookAppointmentComponent implements OnInit {
-  appointmentForm !: FormGroup;
+export class BookAppointmentComponent {
+  step = 1;
 
-  constructor(private fb: FormBuilder) {}
+  stepOneForm: FormGroup;
+  stepTwoForm: FormGroup;
 
-  ngOnInit(): void {
-    // ✅ Initialize the form properly
-    this.appointmentForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+  constructor(private fb: FormBuilder) {
+    this.stepOneForm = this.fb.group({
+      userId: ['', [Validators.required, Validators.pattern(/^\d{6}$/)]],
+      contactNumber: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
       date: ['', Validators.required],
       time: ['', Validators.required],
       message: ['']
     });
 
-    console.log('BookAppointmentComponent loaded'); // debug check
+    this.stepTwoForm = this.fb.group({
+      service: ['', Validators.required],
+      doctor: ['', Validators.required],
+      consultationMode: ['', Validators.required],
+      paymentMode: ['', Validators.required]
+    });
   }
 
-  onSubmit(): void {
-    if (this.appointmentForm.valid) {
-      console.log('Appointment submitted:', this.appointmentForm.value);
-      alert('Appointment booked successfully!');
-      this.appointmentForm.reset();
+  goToStepTwo() {
+    if (this.stepOneForm.valid) {
+      this.step = 2;
     } else {
-      alert('Please fill all required fields');
+      this.stepOneForm.markAllAsTouched(); // Show errors if any
+    }
+  }
+
+  onSubmit() {
+    if (this.stepTwoForm.valid) {
+      const appointmentData = {
+        ...this.stepOneForm.value,
+        ...this.stepTwoForm.value
+      };
+      console.log('Submitted:', appointmentData);
+      // Submit to backend here
+    } else {
+      this.stepTwoForm.markAllAsTouched();
     }
   }
 }

@@ -33,9 +33,15 @@
     </ul>
   </div>
   <div class="nav-links auth-links">
-    <ul>
-      <li><a routerLink="/signup" id="signup">Sign Up</a></li>
-      <li><button id="login-btn" routerLink="/login">Log In</button></li>
-    </ul>
-  </div>
+  <ul>
+    <li class="dropdown" (click)="toggleAccountDropdown()">
+      <span class="dropdown-toggle">Account ⏷</span>
+      <ul class="dropdown-menu" *ngIf="accountDropdownVisible">
+        <li><a routerLink="/login">Log In</a></li>
+        <li><a routerLink="/signup">Sign Up</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
 </nav>

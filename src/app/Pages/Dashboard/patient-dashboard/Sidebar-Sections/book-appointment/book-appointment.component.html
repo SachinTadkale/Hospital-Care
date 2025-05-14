@@ -1,22 +1,87 @@
-<div class="main-content">
-  <form [formGroup]="appointmentForm" (ngSubmit)="onSubmit()">
-    <h2>Book Appointment</h2>
+<div class="appointment-container">
+  <h2>Book an Appointment</h2>
+  <p>Please select from the following to book an appointment</p>
 
-    <label for="name">Full Name</label>
-    <input id="name" formControlName="name" type="text" required />
+  <!-- Step 1 -->
+  <form *ngIf="step === 1" [formGroup]="stepOneForm" (ngSubmit)="goToStepTwo()">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>User Unique ID</label>
+        <input type="text" formControlName="userId" placeholder="Enter your 6 digit unique ID" />
+      </div>
 
-    <label for="email">Email</label>
-    <input id="email" formControlName="email" type="email" required />
+      <div class="form-group">
+        <label>Contact Number</label>
+        <input type="text" formControlName="contactNumber" placeholder="Enter your mobile number" />
+      </div>
 
-    <label for="date">Appointment Date</label>
-    <input id="date" formControlName="date" type="date" required />
+      <div class="form-group">
+        <label>Select date</label>
+        <input type="date" formControlName="date" />
+      </div>
 
-    <label for="time">Time</label>
-    <input id="time" formControlName="time" type="time" required />
+      <div class="form-group">
+        <label>Select time</label>
+        <input type="time" formControlName="time" />
+      </div>
+    </div>
 
-    <label for="message">Message</label>
-    <textarea id="message" formControlName="message" rows="3"></textarea>
+    <div class="form-group">
+      <label>Message (if any)</label>
+      <textarea formControlName="message" placeholder="Type here..."></textarea>
+    </div>
 
-    <button type="submit">Book Now</button>
+    <div class="btn-wrapper">
+      <button type="submit">Next</button>
+    </div>
+  </form>
+
+  <!-- Step 2 -->
+  <form *ngIf="step === 2" [formGroup]="stepTwoForm" (ngSubmit)="onSubmit()">
+    <div class="form-grid">
+      <div class="form-group">
+        <label>What are you consulting for?</label>
+        <select formControlName="service">
+          <option value="" disabled>Please select a service</option>
+          <option value="Dental">Dental</option>
+          <option value="Dermatology">Dermatology</option>
+          <option value="Cardiology">Cardiology</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Doctor</label>
+        <select formControlName="doctor">
+          <option value="" disabled>Please select a doctor</option>
+          <option value="Dr. Sharma">Dr. Sharma</option>
+          <option value="Dr. Patel">Dr. Patel</option>
+          <option value="Dr. Mehra">Dr. Mehra</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Select mode of consultation</label>
+        <select formControlName="consultationMode">
+          <option value="" disabled>Please select mode of consultation</option>
+          <option value="In-person">In-person</option>
+          <option value="Video">Video</option>
+          <option value="Phone">Phone</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Select mode of payment</label>
+        <select formControlName="paymentMode">
+          <option value="" disabled>Please select mode of payment</option>
+          <option value="Online">Online</option>
+          <option value="Cash">Cash</option>
+          <option value="Insurance">Insurance</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="btn-wrapper">
+      <button type="submit">Book Appointment</button>
+    </div>
   </form>
 </div>
