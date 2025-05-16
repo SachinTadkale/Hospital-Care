@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { VerifyOtpComponent } from './Pages/Authentication/verify-otp/verify-otp.component';
 
 
 
@@ -142,6 +143,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./Pages/Schemes/scheme-detail/scheme-detail.component')
         .then(m => m.SchemeDetailComponent)
+  },{
+    path:'verifyOtp', component:VerifyOtpComponent
   }
 ];
   

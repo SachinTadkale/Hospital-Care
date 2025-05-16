@@ -29,16 +29,6 @@ export class HomeComponent {
   ) {}
 
   bookAppointment(): void {
-    const user = this.authService.getCurrentUser();
-
-    if (user) {
-      // User already logged in → go to book appointment directly
-      this.router.navigate(['/book-appointment']);
-    } else {
-      // Not logged in → go to login, and pass a redirect parameter
-      this.router.navigate(['/login'], {
-        queryParams: { redirectTo: '/book-appointment' }
-      });
-    }
+  this.router.navigate(['/verifyOtp']);
   }
 }
