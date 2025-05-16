@@ -2,7 +2,20 @@
   <img class="img_login"  src="assets/Login Images/clipboard-stethoscope.jpg" alt="loginImg" />
 </div>
       <div class="otp-container">
-        <input type="email" [(ngModel)]="email" placeholder="Enter your email" required />
+        <h3>Verify Email </h3>
+        <input
+  type="email"
+  name="email"
+  [(ngModel)]="email"
+  placeholder="Enter your email"
+  required
+  email
+  #emailInput="ngModel"
+/>
+<div *ngIf="emailInput.invalid && emailInput.touched" class="error">
+  Please enter a valid email address.
+</div>
+
 
         <div class="Verify_container">
           <button (click)="otpSent ? verifyOtp() : sendOtp()">
@@ -10,7 +23,7 @@
           </button>
 
           <div class="verifyOtp" *ngIf="otpSent">
-            <input type="text" [(ngModel)]="otp" placeholder="Enter OTP" />
+            <input type="text" [(ngModel)]="otp" placeholder="Enter OTP" required/>
           </div>
 
           <button (click)="cancel()" class="cancel-button">Cancel</button>

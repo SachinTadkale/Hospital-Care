@@ -23,6 +23,18 @@ export class VerifyOtpComponent {
   constructor(private otpService:OtpverifyService, private router: Router) {}
 
   sendOtp() {
+
+   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  if (!this.email) {
+    this.message = 'Please enter your email.';
+    return;
+  }
+
+  if (!emailPattern.test(this.email)) {
+    this.message = 'Email format is invalid.';
+    return;
+  }
     this.isLoading = true;
     this.otpService.sendOtp(this.email).subscribe({
       next: (response) => {
@@ -37,6 +49,10 @@ export class VerifyOtpComponent {
   }
 
   verifyOtp() {
+     if (!this.otp) {
+      this.message = 'OTP is required.';
+      return;
+    }
     this.isLoading = true;
     this.otpService.verifyOtp(this.email, this.otp).subscribe({
       next: (response) => {
