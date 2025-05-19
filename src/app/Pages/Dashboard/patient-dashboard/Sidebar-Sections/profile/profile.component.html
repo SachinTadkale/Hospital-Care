@@ -1,1 +1,12 @@
 <p>profile works!</p>
+<div  class="profilecard">
+  <h2>User Details</h2>
+
+  <p><strong>Name:</strong> {{ user?.firstName }}</p>
+  <p><strong>Email:</strong> {{ user?.username }}</p>
+</div>
+
+<ng-template #errorTemplate>
+  <p *ngIf="error" style="color: red;">{{ error }}</p>
+</ng-template>
+

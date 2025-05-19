@@ -20,33 +20,76 @@
 
 .signup-box h2 {
   text-align: center;
-  color: #00796b;
-  margin-bottom: 1.5rem;
-  font-size: 24px;
+  margin-bottom: 25px;
+  color: #222;
 }
 
-.form-row {
+form .form-row {
   display: flex;
-  gap: 20px;
-  margin-bottom: 1.2rem;
-  flex-wrap: wrap;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 18px;
 }
 
-.form-group {
+.form-row label {
   flex: 1;
+  font-weight: 500;
+  color: #333;
+  margin-right: 10px;
+}
+
+.form-row input {
+  flex: 2;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.form-row input:focus {
+  border-color: #007bff;
+}
+
+button[type="submit"],
+button[type="button"] {
+  width: 100%;
+  padding: 12px;
+  background-color: #004d40;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.3s;
+}
+
+button[disabled] {
+  background-color: #00796b;
+  cursor: not-allowed;
+}
+
+button:hover:not([disabled]) {
+  background-color: #0056b3;
+}
+
+.verifyOtp_form{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 200px;
+  background-color: white;
+  padding: 7px;
+  box-shadow: 5px 5px 5px gray;
+  border:1px solid gray;
+  border-radius: 10px;
 }
 
-.form-group label {
-  margin-bottom: 0.4rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
+.verifyOtp_form input{
   padding: 10px 12px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -54,54 +97,96 @@
   transition: 0.3s;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: #00796b;
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.15);
+.verifyOtp_form button{
+  width: 70%;
+  height: 50px;
 }
 
-.radio-group {
-  display: flex;
-  gap: 1rem;
-  margin-top: 0.4rem;
-}
-
-.radio-group label {
-  font-weight: normal;
-}
-
-button {
+.otp_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 12px;
-  background-color: #00796b;
-  color: white;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  margin-top: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  height: 100%;
+  background-color: rgba(125, 118, 118, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
 }
 
-button:hover {
-  background-color: #004d40;
+.spinner_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
-.login-link {
-  text-align: center;
-  margin-top: 1.5rem;
+.spinner {
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.email-otp-wrapper {
+  display: flex;
+  gap: 10px;
+  flex: 2;
+}
+
+.email-otp-wrapper input {
+  flex: 2;
+  padding: 10px;
   font-size: 14px;
-  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
-.login-link a {
-  color: #00796b;
-  font-weight: 600;
-  text-decoration: none;
+.email-otp-wrapper button {
+  flex: 1;
+  padding: 10px;
+  font-size: 14px;
+  background-color:#00796b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-.login-link a:hover {
-  text-decoration: underline;
+.email-otp-wrapper button:hover:not([disabled]) {
+  background-color: #218838;
 }
+
+.email-otp-wrapper button[disabled] {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* Adjust on small screens */
+@media (max-width: 600px) {
+  .email-otp-wrapper {
+    flex-direction: column;
+  }
+}
+
+.sendOtp-btn{
+  width: 50px;
+  height: 40px;
+}
+

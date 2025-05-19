@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-patient-dashboard-home',
@@ -7,6 +7,13 @@ import { Component } from '@angular/core';
   templateUrl: './patient-dashboard-home.component.html',
   styleUrl: './patient-dashboard-home.component.css'
 })
-export class PatientDashboardHomeComponent {
+export class PatientDashboardHomeComponent implements OnInit{
+
+firstName: string | null = null;
+
+  ngOnInit(): void {
+      this.firstName = localStorage.getItem('firstName');
+  }
+  
 
 }

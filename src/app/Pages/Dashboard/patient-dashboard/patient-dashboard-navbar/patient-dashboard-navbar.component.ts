@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { userData } from '../../../../model/user-data';
+import { PatientService } from '../../../../Services/Patient/patient.service';
 
 @Component({
   selector: 'app-patient-dashboard-navbar',
@@ -9,17 +11,16 @@ import { Router } from '@angular/router';
   styleUrl: './patient-dashboard-navbar.component.css'
 })
 export class PatientDashboardNavbarComponent {
-  storedUser = localStorage.getItem('name');
-  uname: any = this.storedUser;
-  constructor(private router:Router){}
-  logout() {
-    if (localStorage.getItem('username')) {
-      localStorage.removeItem('username');
+
+  
+constructor(private router: Router){}
+
+    logout(){
+
+      localStorage.removeItem('token');
+      localStorage.removeItem('firstName');
+      this.router.navigate(['/landing']);
     }
-  }
-  profile(){
-    this.router.navigate(
-      [{ outlets: { primary: ['profile'], outlet2: null } }]
-    );
-  }
+  
+  
 }

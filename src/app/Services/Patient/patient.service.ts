@@ -1,36 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Patient } from '../../model/patient-data';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { userData } from '../../model/user-data';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
-  private localStorageKey = 'patients';
+  
+ private baseUrl = 'http://localhost:8080/api'; // change to your backend URL
 
-  getAllPatients(): Patient[] {
-    const data = localStorage.getItem(this.localStorageKey);
-    return data ? JSON.parse(data) : [];
+  constructor(private http: HttpClient) {}
+
+  getUserById(): Observable<userData> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+
+    return this.http.get<userData>(`${this.baseUrl}/getUserById`, { headers });
   }
 
-  savePatients(patients: Patient[]): void {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(patients));
-  }
+ 
 
-  addPatient(patient: Patient): void {
-    const patients = this.getAllPatients();
-    patients.push(patient);
-    this.savePatients(patients);
-  }
-
-  updatePatient(updatedPatient: Patient): void {
-    const patients = this.getAllPatients().map(p =>
-      p.patient_id === updatedPatient.patient_id ? updatedPatient : p
-    );
-    this.savePatients(patients);
-  }
-
-  deletePatient(patientId: number): void {
-    const patients = this.getAllPatients().filter(p => p.patient_id !== patientId);
-    this.savePatients(patients);
-  }
+ 
 }

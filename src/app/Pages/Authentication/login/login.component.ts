@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AuthenticationService } from '../../../Services/Authentication/authentication-service.service';
+import { AuthRequest } from '../../../model/authrequest';
+import { PatientService } from '../../../Services/Patient/patient.service';
+import { userData } from '../../../model/user-data';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +14,21 @@ import { AuthenticationService } from '../../../Services/Authentication/authenti
   styleUrl: './login.component.css',
 })
 export class LoginComponent implements OnInit {
-  email: string = '';
-  password: string = '';
+
+ 
+
   message: string = '';
   redirectTo: string | null = null;
+
+  loginData: AuthRequest= {
+    username:'',
+    password:''
+  };
 
   constructor(
     private authService: AuthenticationService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute, private userService: PatientService
   ) {}
 
   ngOnInit(): void {
@@ -29,25 +38,30 @@ export class LoginComponent implements OnInit {
 }
 
 
-  login(): void {
-  const trimmedEmail = this.email.trim();
-  const trimmedPassword = this.password.trim();
+  login(){
 
-  this.message = this.authService.login(trimmedEmail, trimmedPassword);
+    if (this.loginData.username && this.loginData.password) {
+      this.authService.login(this.loginData).subscribe({
+        next: (res: string) => {
+  alert('Login Successful!');
+  localStorage.setItem('token', res); // `res` is already the token string
+  this.router.navigate(['/patient-dashboard']);
+},
+        error: (error) => {
+          console.error('Login failed:', error);
+          alert('Invalid credentials, please try again.');
+        }
+      });
 
-  if (this.message === 'Login successful') {
-    alert(this.message);
-
-    if (this.redirectTo) {
-      // Convert 'patient-dashboard/book-appointment' to a navigation array
-      this.router.navigate(this.redirectTo.split('/'));
-    } else {
-      // Default to patient dashboard
-      this.router.navigate(['/patient-dashboard']);
+    } 
+    else
+     {
+      alert('Please fill in all fields.');
     }
-  } else {
-    alert(this.message); // Invalid credentials
-  }
+  
+  
 }
+
+
 
 }

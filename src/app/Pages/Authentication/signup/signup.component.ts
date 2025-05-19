@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '../../../Services/Authentication/authentication-service.service';
+import { HttpClient } from '@angular/common/http';
+import { OtpverifyService } from '../../../Services/OtpVerifyService/otpverify.service';
+import { userData } from '../../../model/user-data';
 
 
 @Component({
@@ -13,64 +16,108 @@ import { AuthenticationService } from '../../../Services/Authentication/authenti
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  step: number = 1;
 
-  patient = {
-    full_name: '',
-    email: '',
-    phone: '',
-    dob: '',
-    password: '',
-    confirmPassword: '',
-    gender: '',
-    blood_group: '',
-    city_state: '',
-    emergency_contact: '',
-    address: ''
+  isLoading = false;
+
+  otpSent: boolean = false;
+  otp: string = '';
+  emailVerified: boolean = false;
+
+ 
+
+  user: userData = {
+
+   firstName:'',
+  lastName :'',
+  age : 0,
+  address :'',
+  username: '',
+  password : '',
+  role: 'PATIENT'
+
   };
 
   constructor(
-    private authService: AuthenticationService,
-    private router: Router
-  ) {}
+    private authService: AuthenticationService, private http: HttpClient,
+    private router: Router, private otpService: OtpverifyService
+  ) { }
 
-  nextStep() {
-    if (this.step === 1) {
-      if (
-        this.patient.full_name &&
-        this.patient.email &&
-        this.patient.phone &&
-        this.patient.dob &&
-        this.patient.password &&
-        this.patient.confirmPassword
-      ) {
-        if (this.patient.password !== this.patient.confirmPassword) {
-          alert('Passwords do not match!');
-          return;
-        }
-        this.step = 2;
-      } else {
-        alert('Please fill all required fields in Step 1.');
-      }
+
+
+  sendOtp() {
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    if (!this.user.username) {
+      alert('Please enter your email.');
+      return;
     }
+
+    if (!emailPattern.test(this.user.username)) {
+      alert('Email format is invalid.');
+      return;
+    }
+    this.isLoading = true;
+    this.otpService.sendOtp(this.user.username).subscribe({
+      next: (response) => {
+        this.isLoading = false;
+        this.otpSent = true;
+        alert(response.message);
+      },
+      error: () => {
+        alert('Failed to send OTP.');
+        this.isLoading=false;
+      }
+    });
   }
 
-  previousStep() {
-    this.step = 1;
+
+  verifyOtp() {
+    if (!this.otp) {
+      alert('OTP is required.');
+      return;
+    }
+    this.isLoading = true;
+    this.otpService.verifyOtp(this.user.username, this.otp).subscribe({
+      next: (response) => {
+        this.isLoading = false;
+        this.emailVerified = true;
+        alert(response.message);
+
+      },
+      error: () => {
+        alert('Invalid OTP.');
+      }
+    });
   }
 
-  onSubmit(form: any) {
-    if (form.valid) {
-      const message = this.authService.signup(this.patient);  // ✅ Uses service now
-      alert(message);
 
-      if (message === 'Signup successful') {
-        form.reset();
-        this.step = 1;
+  onSubmit() {
+
+
+    if(
+      this.user.firstName && this.user.lastName && this.user.password && this.user.username
+    ){
+      
+
+    this.authService.register(this.user).subscribe({
+      next: (response) => {
+        alert(response.message);
         this.router.navigate(['/login']);
-      }
-    } else {
-      alert('Please complete the form correctly.');
-    }
+
+
+      },
+      error: (error) => {
+        console.error('Error during signup:', error);
+        alert(error.error?.message || 'Signup failed.');
+      },
+    });
+  }else{
+
+    alert('please fill required fields ');
+  }
   }
 }
+
+
+

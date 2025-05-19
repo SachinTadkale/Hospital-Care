@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 import { VerifyOtpComponent } from './Pages/Authentication/verify-otp/verify-otp.component';
+import { LandingLayoutComponent } from './Pages/Landing/landing-layout/landing-layout.component';
+import { LandingNavComponent } from './Components/navbars/landing-nav/landing-nav.component';
 
 
 
@@ -145,7 +147,7 @@ export const routes: Routes = [
         .then(m => m.SchemeDetailComponent)
   },{
     path:'verifyOtp', component:VerifyOtpComponent
-  }
+  },{path:'landing', component:LandingLayoutComponent}
 ];
   
   
