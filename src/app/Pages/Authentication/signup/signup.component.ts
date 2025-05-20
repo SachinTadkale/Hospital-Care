@@ -23,7 +23,6 @@ export class SignupComponent {
   otp: string = '';
   emailVerified: boolean = false;
 
- 
 
   user: userData = {
 

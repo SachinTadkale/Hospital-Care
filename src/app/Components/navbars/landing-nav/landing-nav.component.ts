@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
@@ -9,7 +9,10 @@ import { CommonModule } from '@angular/common';
   templateUrl: './landing-nav.component.html',
   styleUrl: './landing-nav.component.css'
 })
-export class LandingNavComponent {
+export class LandingNavComponent implements OnInit{
+
+  isLogin: boolean =false;
+
   dropdownVisible = false;
   servicesDropdownVisible = false;
   selectedScheme: any = null;
@@ -50,5 +53,28 @@ toggleAccountDropdown(): void {
   this.accountDropdownVisible = !this.accountDropdownVisible;
 }
 
+ngOnInit(): void {
+     const token = localStorage.getItem('token');
+    if (token) {
+      this.isLogin = true;
+    } else {
+      this.isLogin= false;
+    }
+    
+}
+
+login(){
+  this.router.navigate(['/login']);
+  this.isLogin = true;
+
+   
+}
+
+logout(){
+
+  localStorage.removeItem('token');
+ 
+  this.isLogin = false;
+}
 
 }

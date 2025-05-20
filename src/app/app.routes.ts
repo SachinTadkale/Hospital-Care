@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { VerifyOtpComponent } from './Pages/Authentication/verify-otp/verify-otp.component';
 import { LandingLayoutComponent } from './Pages/Landing/landing-layout/landing-layout.component';
 import { LandingNavComponent } from './Components/navbars/landing-nav/landing-nav.component';
+import { BookAppointmentComponent } from './Pages/Dashboard/patient-dashboard/Sidebar-Sections/book-appointment/book-appointment.component';
 
 
 
@@ -83,12 +84,7 @@ export const routes: Routes = [
   },
 
   // <------------------------------ Dashboard ------------------------------>
-  {
-  path: 'book-appointment',
-  loadComponent: () => import(
-    './Pages/Dashboard/patient-dashboard/Sidebar-Sections/book-appointment/book-appointment.component'
-  ).then((m) => m.BookAppointmentComponent),
-},
+{path:'book-appointment', component:BookAppointmentComponent},
   {
     path: 'patient-dashboard',
     loadComponent: () => {

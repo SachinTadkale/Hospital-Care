@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
         next: (res: string) => {
   alert('Login Successful!');
   localStorage.setItem('token', res); // `res` is already the token string
-  this.router.navigate(['/patient-dashboard']);
+  this.router.navigate(['/']);
 },
         error: (error) => {
           console.error('Login failed:', error);

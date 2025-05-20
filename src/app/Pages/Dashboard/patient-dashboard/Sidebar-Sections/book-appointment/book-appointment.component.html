@@ -1,87 +1,102 @@
-<div class="appointment-container">
-  <h2>Book an Appointment</h2>
-  <p>Please select from the following to book an appointment</p>
+<div class="signup-container">
+  <div class="signup-box">
+    <h2 style="color: #00796b;">Book Appointment</h2>
 
-  <!-- Step 1 -->
-  <form *ngIf="step === 1" [formGroup]="stepOneForm" (ngSubmit)="goToStepTwo()">
-    <div class="form-grid">
-      <div class="form-group">
-        <label>User Unique ID</label>
-        <input type="text" formControlName="userId" placeholder="Enter your 6 digit unique ID" />
+    <form (ngSubmit)="onSubmit()" #appointmentForm="ngForm">
+
+      <div class="form-row">
+        <label for="patientName">Patient Name: *</label>
+        <input
+          type="text"
+          id="patientName"
+          name="patientName"
+          [(ngModel)]="patientAppont.patientName"
+          required
+        />
       </div>
 
-      <div class="form-group">
-        <label>Contact Number</label>
-        <input type="text" formControlName="contactNumber" placeholder="Enter your mobile number" />
+      <div class="form-row">
+        <label for="contactNumber">Contact Number: *</label>
+        <input
+          type="tel"
+          id="contactNumber"
+          name="contactNumber"
+          [(ngModel)]="patientAppont.contactNumber"
+          required
+        />
       </div>
 
-      <div class="form-group">
-        <label>Select date</label>
-        <input type="date" formControlName="date" />
+      <div class="form-row">
+        <label for="age">Age: *</label>
+        <input
+          type="number"
+          id="age"
+          name="age"
+          [(ngModel)]="patientAppont.age"
+          required
+        />
       </div>
 
-      <div class="form-group">
-        <label>Select time</label>
-        <input type="time" formControlName="time" />
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label>Message (if any)</label>
-      <textarea formControlName="message" placeholder="Type here..."></textarea>
-    </div>
-
-    <div class="btn-wrapper">
-      <button type="submit">Next</button>
-    </div>
-  </form>
-
-  <!-- Step 2 -->
-  <form *ngIf="step === 2" [formGroup]="stepTwoForm" (ngSubmit)="onSubmit()">
-    <div class="form-grid">
-      <div class="form-group">
-        <label>What are you consulting for?</label>
-        <select formControlName="service">
-          <option value="" disabled>Please select a service</option>
-          <option value="Dental">Dental</option>
-          <option value="Dermatology">Dermatology</option>
-          <option value="Cardiology">Cardiology</option>
+      <div class="form-row">
+        <label for="gender">Gender: *</label>
+        <select
+          id="gender"
+          name="gender"
+          [(ngModel)]="patientAppont.gender"
+          required
+        >
+          <option value="" disabled selected>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
         </select>
       </div>
 
-      <div class="form-group">
-        <label>Doctor</label>
-        <select formControlName="doctor">
-          <option value="" disabled>Please select a doctor</option>
-          <option value="Dr. Sharma">Dr. Sharma</option>
-          <option value="Dr. Patel">Dr. Patel</option>
-          <option value="Dr. Mehra">Dr. Mehra</option>
-        </select>
+      <div class="form-row">
+        <label for="disease">Disease: *</label>
+        <input
+          type="text"
+          id="disease"
+          name="disease"
+          [(ngModel)]="patientAppont.disease"
+          required
+        />
       </div>
 
-      <div class="form-group">
-        <label>Select mode of consultation</label>
-        <select formControlName="consultationMode">
-          <option value="" disabled>Please select mode of consultation</option>
-          <option value="In-person">In-person</option>
-          <option value="Video">Video</option>
-          <option value="Phone">Phone</option>
-        </select>
+      <div class="form-row">
+        <label for="selectedDate">Select Date: *</label>
+        <input
+          type="date"
+          id="selectedDate"
+          name="selectedDate"
+          [(ngModel)]="patientAppont.selectedDate"
+          required
+        />
       </div>
 
-      <div class="form-group">
-        <label>Select mode of payment</label>
-        <select formControlName="paymentMode">
-          <option value="" disabled>Please select mode of payment</option>
-          <option value="Online">Online</option>
-          <option value="Cash">Cash</option>
-          <option value="Insurance">Insurance</option>
-        </select>
+      <div class="form-row">
+        <label for="selectedTime">Select Time: *</label>
+        <input
+          type="time"
+          id="selectedTime"
+          name="selectedTime"
+          [(ngModel)]="patientAppont.selectedTime"
+          required
+        />
       </div>
-    </div>
 
-    <div class="btn-wrapper">
-      <button type="submit">Book Appointment</button>
-    </div>
-  </form>
+      <div class="form-row">
+        <label for="message">Message: *</label>
+        <input
+          type="text"
+          id="message"
+          name="message"
+          [(ngModel)]="patientAppont.message"
+          required
+        />
+      </div>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 </div>

@@ -29,6 +29,13 @@ export class HomeComponent {
   ) {}
 
   bookAppointment(): void {
-  this.router.navigate(['/verifyOtp']);
-  }
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      this.router.navigate(['/book-appointment']);
+    } else {
+      this.router.navigate(['/login']);
+    }
+}
+
 }
