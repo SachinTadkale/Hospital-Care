@@ -3,6 +3,7 @@ import { VerifyOtpComponent } from './Pages/Authentication/verify-otp/verify-otp
 import { LandingLayoutComponent } from './Pages/Landing/landing-layout/landing-layout.component';
 import { LandingNavComponent } from './Components/navbars/landing-nav/landing-nav.component';
 import { BookAppointmentComponent } from './Pages/Dashboard/patient-dashboard/Sidebar-Sections/book-appointment/book-appointment.component';
+import { authGuard } from './routegard/auth.guard';
 
 
 
@@ -91,6 +92,7 @@ export const routes: Routes = [
       return import(
         './Pages/Dashboard/patient-dashboard/patient-dashboard.component'
       ).then((m) => m.PatientDashboardComponent);
+    
     },
     children: [
       
@@ -134,7 +136,7 @@ export const routes: Routes = [
         },
       }
     
-    ]
+    ],canActivate:[authGuard]
   },
   {
     path: 'scheme/:id',
