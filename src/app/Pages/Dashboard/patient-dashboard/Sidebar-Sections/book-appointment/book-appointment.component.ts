@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,20 +13,27 @@ import { Router } from '@angular/router';
   templateUrl: './book-appointment.component.html',
   styleUrls: ['./book-appointment.component.css']
 })
-export class BookAppointmentComponent {
+export class BookAppointmentComponent implements OnInit{
 
   patientAppont: patientAppointment = {
     patientName: '',
     contactNumber: '',
     age: 0,
     gender: '',
+    doctor:'',
     disease: '',
     selectedDate: '',
     selectedTime: '',
     message: ''
   }
 
+
+
  constructor(private patientService:PatientService, private router: Router){}
+
+ ngOnInit(): void {
+     
+ }
 
  onSubmit(){
 
@@ -41,7 +48,7 @@ if(
    this.patientService.bookAppointment(this.patientAppont).subscribe({
       next: (response) => {
         alert(response.message);
-        this.router.navigate(['/patient-dashboard']);
+        this.router.navigate(['']);
 
 
       },

@@ -7,7 +7,7 @@
       <div class="form-row">
         <label for="patientName">Patient Name: *</label>
         <input
-          type="text"
+          type="text"n
           id="patientName"
           name="patientName"
           [(ngModel)]="patientAppont.patientName"
@@ -27,7 +27,7 @@
       </div>
 
       <div class="form-row">
-        <label for="age">Age: *</label>
+        <label for="age">Age: </label>
         <input
           type="number"
           id="age"
@@ -38,7 +38,7 @@
       </div>
 
       <div class="form-row">
-        <label for="gender">Gender: *</label>
+        <label for="gender">Gender: </label>
         <select
           id="gender"
           name="gender"
@@ -50,6 +50,17 @@
           <option value="Female">Female</option>
           <option value="Other">Other</option>
         </select>
+      </div>
+
+          <div class="form-row">
+        <label for="disease">Doctor: *</label>
+        <input
+          type="text"
+          id="disease"
+          name="disease"
+          [(ngModel)]="patientAppont.doctor"
+          required
+        />
       </div>
 
       <div class="form-row">
@@ -86,7 +97,7 @@
       </div>
 
       <div class="form-row">
-        <label for="message">Message: *</label>
+        <label for="message">Message: </label>
         <input
           type="text"
           id="message"

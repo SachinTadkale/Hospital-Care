@@ -37,8 +37,8 @@
     <li class="dropdown" (click)="toggleAccountDropdown()">
       <span class="dropdown-toggle">Account ⏷</span>
       <ul class="dropdown-menu" *ngIf="accountDropdownVisible">
-        <li  *ngIf="isLogin"><a routerLink="/patient-dashboard">Dashboard</a></li>
-        <li (click)="isLogin ? logout() : login()">{{isLogin ? 'Logout' : 'Login'}}</li>
+        <li><a routerLink="/signup">Sigin</a></li>
+        <li ><a routerLink="/login">Login</a></li>
       </ul>
     </li>
   </ul>
