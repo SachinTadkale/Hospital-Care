@@ -7,14 +7,14 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrls: ['./profile.component.css']  // ✅ Correct plural
 })
-export class ProfileComponent implements OnInit{
-
-   user: userData| null = null;
+export class ProfileComponent implements OnInit {
+  user: userData | null = null;
   error: string = '';
+  isEditing = false;
 
   constructor(private userService: PatientService) {}
 
@@ -24,14 +24,32 @@ export class ProfileComponent implements OnInit{
 
   fetchUser(): void {
     this.userService.getUserById().subscribe({
-      next: (data) => {
+      next: (data: userData) => {
         this.user = data;
-        localStorage.setItem('firstName',data.firstName);
+        localStorage.setItem('firstName', data.firstName);
       },
-      error: (err) => {
+      error: (err: any) => {
         this.error = err.error?.error || 'Failed to fetch user';
       }
     });
   }
 
+  enableEdit(): void {
+    this.isEditing = true;
+  }
+
+  save(): void {
+    if (this.user) {
+      this.userService.updateUser(this.user).subscribe({
+        next: () => {
+          this.isEditing = false;
+          alert('Profile updated!');
+        },
+        error: (err: any) => {
+          alert('Failed to save profile');
+          console.error(err);
+        }
+      });
+    }
+  }
 }

@@ -1,8 +1,168 @@
-.profilecard{
-    position: absolute;
-    top: 200px;
-    left: 400px;
-    width: 500px;
-    height: 800px;
-    background-color: antiquewhite;
+.profilecard {
+  position: relative;
+  max-width: 450px;
+  margin: 100px auto 40px;  /* 👈 Push below navbar */
+  padding: 25px 30px;
+  background-color: #f9f7f1;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  z-index: 1;
+}
+
+.profilecard h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2b6a66; /* teal accent */
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  border-bottom: 2px solid #2b6a66;
+  padding-bottom: 10px;
+}
+
+.profilecard p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 8px 0;
+}
+
+.profilecard p strong {
+  color: #004d40; /* dark teal */
+  width: 140px;
+  display: inline-block;
+}
+
+.profilecard label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #004d40;
+}
+
+.profilecard label strong {
+  width: 140px;
+  display: inline-block;
+}
+
+.profilecard input[type="text"],
+.profilecard input[type="email"],
+.profilecard input[type="tel"],
+.profilecard input[type="date"] {
+  flex: 1 1 auto;
+  padding: 8px 12px;
+  border: 1.5px solid #2b6a66;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #333;
+  transition: border-color 0.3s ease;
+  min-width: 150px;
+  margin-left: 10px;
+}
+
+.profilecard input[type="text"]:focus,
+.profilecard input[type="email"]:focus,
+.profilecard input[type="tel"]:focus,
+.profilecard input[type="date"]:focus {
+  outline: none;
+  border-color: #004d40;
+  box-shadow: 0 0 5px #004d40aa;
+}
+
+.profilecard button {
+  background-color: #2b6a66;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 8px 0 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+  user-select: none;
+}
+
+.profilecard button:hover {
+  background-color: #004d40;
+}
+
+.error-message {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+  color: #842029;
+  border-radius: 8px;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .profilecard {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .profilecard label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profilecard label strong {
+    margin-bottom: 5px;
+  }
+
+  .profilecard input[type="text"],
+  .profilecard input[type="email"],
+  .profilecard input[type="tel"],
+  .profilecard input[type="date"] {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .profilecard button {
+    width: 100%;
+    margin: 10px 0 0 0;
+  }
+}
+/* Container for name inputs */
+.profilecard label.name-group {
+  display: flex;
+  gap: 12px; /* space between first and last name inputs */
+  align-items: center;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #004d40;
+}
+
+/* Label text for name */
+.profilecard label.name-group strong {
+  width: 140px;
+  display: inline-block;
+}
+
+/* Each input inside name-group */
+.profilecard label.name-group input {
+  flex: 1;               /* take equal space */
+  padding: 8px 12px;
+  border: 1.5px solid #2b6a66;
+  border-radius: 8px;
+  font-size: 15px;
+  font-family: inherit;
+  color: #333;
+  transition: border-color 0.3s ease;
+  min-width: 0;          /* allow shrinking */
+}
+
+.profilecard label.name-group input:focus {
+  outline: none;
+  border-color: #004d40;
+  box-shadow: 0 0 5px #004d40aa;
 }

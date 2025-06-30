@@ -74,6 +74,16 @@ export const routes: Routes = [
       );
     },
   },
+{
+    path: 'registration',
+    pathMatch: 'full',
+    loadComponent: () => {
+      return import('./Pages/Authentication/registration/registration.component').then(
+        (m) => m.RegistrationComponent
+      );
+    },
+  },
+
   {
     path: 'login',
     pathMatch: 'full',

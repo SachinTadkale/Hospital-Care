@@ -1,57 +1,52 @@
 <div class="signup-container">
   <div class="signup-box">
-
     <h2 style="color:  #00796b;">Patient Registration</h2>
 
-    <form  (ngSubmit)="onSubmit()">
-       
+    <form (ngSubmit)="onSubmit()">
       <div class="form-row">
-        <label for="firstName">First Name:  *</label>
+        <label for="firstName">First Name: *</label>
         <input type="text" id="firstName" name="firstName" [(ngModel)]="user.firstName" required />
       </div>
 
       <div class="form-row">
-        <label for="lastName">Last Name:  *</label>
+        <label for="lastName">Last Name: *</label>
         <input type="text" id="lastName" name="lastName" [(ngModel)]="user.lastName" required />
       </div>
 
-     <div class="form-row">
-  <label for="email">Email Address: *</label>
-  <div class="email-otp-wrapper">
-    <input
-      type="email"
-      id="email"
-      name="email"
-      [(ngModel)]="user.username"
-      required
-      placeholder="youremail@example.com"
-      [readonly]="emailVerified"
-    />
-    <div *ngIf="emailVerified" style="color: green; margin-bottom: 10px;">
-  Email Verified ✅
-</div>
-    <button *ngIf="!emailVerified" type="button" class="sendOtp-btn" (click)="sendOtp()" [disabled]="emailVerified">
-      Send OTP
-    </button>
-  </div>
-</div>
-
- <div class="otp_overlay" *ngIf="otpSent && !emailVerified">
-          <div class="verifyOtp_form">
-           
-            <input
-              type="text"
-              id="otp"
-              name="otp"
-              [(ngModel)]="otp"
-              required
-              placeholder="Enter the OTP sent to your email"
-            />
-            <button type="button" (click)="verifyOtp()">Verify OTP</button>
+      <div class="form-row">
+        <label for="email">Email Address: *</label>
+        <div class="email-otp-wrapper">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="user.username"
+            required
+            placeholder="youremail@example.com"
+            [readonly]="emailVerified"
+          />
+          <div *ngIf="emailVerified" style="color: green; margin-bottom: 10px;">
+            Email Verified ✅
           </div>
+          <button *ngIf="!emailVerified" type="button" class="sendOtp-btn" (click)="sendOtp()" [disabled]="emailVerified">
+            Send OTP
+          </button>
         </div>
+      </div>
 
-      
+      <div class="otp_overlay" *ngIf="otpSent && !emailVerified">
+        <div class="verifyOtp_form">
+          <input
+            type="text"
+            id="otp"
+            name="otp"
+            [(ngModel)]="otp"
+            required
+            placeholder="Enter the OTP sent to your email"
+          />
+          <button type="button" (click)="verifyOtp()">Verify OTP</button>
+        </div>
+      </div>
 
       <div class="form-row">
         <label for="password">Password : *</label>
@@ -60,10 +55,8 @@
 
       <button type="submit" [disabled]="!emailVerified">Submit</button>
     </form>
-
   </div>
 
-  <!-- Spinner -->
   <div *ngIf="isLoading" class="spinner_overlay">
     <div class="spinner"></div>
   </div>

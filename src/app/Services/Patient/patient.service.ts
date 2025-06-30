@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Patient } from '../../model/patient-data';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { userData } from '../../model/user-data';
@@ -9,8 +8,8 @@ import { patientAppointment } from '../../model/bookappointment';
   providedIn: 'root'
 })
 export class PatientService {
-  
- private baseUrl = 'http://localhost:8080/api'; // change to your backend URL
+
+  private baseUrl = 'http://localhost:8080/api'; // Your backend API base URL
 
   constructor(private http: HttpClient) {}
 
@@ -23,13 +22,18 @@ export class PatientService {
     return this.http.get<userData>(`${this.baseUrl}/getUserById`, { headers });
   }
 
+  // ✅ Add this method to allow profile update
+  updateUser(user: userData): Observable<userData> {
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
 
-
-  bookAppointment(patient:patientAppointment): Observable<any> {
-    return this.http.post(`${this.baseUrl}/addAppointment`, patient, { responseType: 'json' });
+    return this.http.put<userData>(`${this.baseUrl}/updateUser`, user, { headers });
   }
 
- 
-
- 
+  bookAppointment(patient: patientAppointment): Observable<any> {
+    return this.http.post(`${this.baseUrl}/addAppointment`, patient, { responseType: 'json' });
+  }
 }

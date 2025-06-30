@@ -1,12 +1,46 @@
-<p>profile works!</p>
-<div  class="profilecard">
-  <h2>User Details</h2>
+<div *ngIf="!error; else errorTemplate" class="profilecard">
 
-  <p><strong>Name:</strong> {{ user?.firstName }}</p>
-  <p><strong>Email:</strong> {{ user?.username }}</p>
+  <!-- Only render this if user is not null -->
+  <ng-container *ngIf="user; else loadingTemplate">
+
+    <h2>User Details</h2>
+
+    <ng-container *ngIf="!isEditing; else editMode">
+      <p><strong>Name:</strong> {{ user.firstName }} {{ user.lastName }}</p>
+      <p><strong>Email:</strong> {{ user.username }}</p>
+      <p><strong>Phone:</strong> {{ user.phone }}</p>
+      <p><strong>Date of Birth:</strong> {{ user.dob | date:'mediumDate' }}</p>
+      <p><strong>Gender:</strong> {{ user.gender }}</p>
+      <p><strong>Blood Group:</strong> {{ user.bloodGroup }}</p>
+      <p><strong>City/State:</strong> {{ user.cityState }}</p>
+      <p><strong>Emergency Contact:</strong> {{ user.emergencyContact }}</p>
+      <p><strong>Address:</strong> {{ user.address }}</p>
+      <button (click)="isEditing = true">Edit</button>
+    </ng-container>
+
+    <ng-template #editMode>
+      <label class="name-group">
+    <strong>Name:</strong>
+    <input [(ngModel)]="user.firstName" placeholder="First Name" />
+    <input [(ngModel)]="user.lastName" placeholder="Last Name" />
+  </label><br />
+      <label><strong>Phone:</strong> <input [(ngModel)]="user.phone" /></label><br />
+      <label><strong>Address:</strong> <input [(ngModel)]="user.address" /></label><br />
+      <!-- Add more editable fields as needed -->
+      <button (click)="save()">Save</button>
+      <button (click)="isEditing = false">Cancel</button>
+    </ng-template>
+
+  </ng-container>
+
+  <ng-template #loadingTemplate>
+    <p>Loading user data...</p>
+  </ng-template>
+
 </div>
 
 <ng-template #errorTemplate>
-  <p *ngIf="error" style="color: red;">{{ error }}</p>
+  <div class="error-message">
+    <p>{{ error }}</p>
+  </div>
 </ng-template>
-

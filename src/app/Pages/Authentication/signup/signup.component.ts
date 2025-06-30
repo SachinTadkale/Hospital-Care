@@ -7,44 +7,37 @@ import { HttpClient } from '@angular/common/http';
 import { OtpverifyService } from '../../../Services/OtpVerifyService/otpverify.service';
 import { userData } from '../../../model/user-data';
 
-
 @Component({
   selector: 'app-signup',
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './signup.component.html',
-  styleUrl: './signup.component.css'
+  styleUrls: ['./signup.component.css']
 })
 export class SignupComponent {
-
   isLoading = false;
-
-  otpSent: boolean = false;
-  otp: string = '';
-  emailVerified: boolean = false;
-
+  otpSent = false;
+  otp = '';
+  emailVerified = false;
 
   user: userData = {
-
-   firstName:'',
-  lastName :'',
-  age : 0,
-  address :'',
-  username: '',
-  password : '',
-  role: 'PATIENT'
-
+    firstName: '',
+    lastName: '',
+    age: 0,
+    address: '',
+    username: '',
+    password: '',
+    role: 'PATIENT'
   };
 
   constructor(
-    private authService: AuthenticationService, private http: HttpClient,
-    private router: Router, private otpService: OtpverifyService
-  ) { }
-
-
+    private authService: AuthenticationService,
+    private http: HttpClient,
+    private router: Router,
+    private otpService: OtpverifyService
+  ) {}
 
   sendOtp() {
-
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
     if (!this.user.username) {
@@ -56,6 +49,7 @@ export class SignupComponent {
       alert('Email format is invalid.');
       return;
     }
+
     this.isLoading = true;
     this.otpService.sendOtp(this.user.username).subscribe({
       next: (response) => {
@@ -64,59 +58,46 @@ export class SignupComponent {
         alert(response.message);
       },
       error: () => {
+        this.isLoading = false;
         alert('Failed to send OTP.');
-        this.isLoading=false;
       }
     });
   }
-
 
   verifyOtp() {
     if (!this.otp) {
       alert('OTP is required.');
       return;
     }
+
     this.isLoading = true;
     this.otpService.verifyOtp(this.user.username, this.otp).subscribe({
       next: (response) => {
         this.isLoading = false;
         this.emailVerified = true;
         alert(response.message);
-
       },
       error: () => {
+        this.isLoading = false;
         alert('Invalid OTP.');
       }
     });
   }
 
-
   onSubmit() {
-
-
-    if(
-      this.user.firstName && this.user.lastName && this.user.password && this.user.username
-    ){
-      
-
-    this.authService.register(this.user).subscribe({
-      next: (response) => {
-        alert(response.message);
-        this.router.navigate(['/login']);
-
-
-      },
-      error: (error) => {
-        console.error('Error during signup:', error);
-        alert(error.error?.message || 'Signup failed.');
-      },
-    });
-  }else{
-
-    alert('please fill required fields ');
-  }
+    if (this.user.firstName && this.user.lastName && this.user.password && this.user.username) {
+      this.authService.register(this.user).subscribe({
+        next: (response) => {
+          alert(response.message);
+          this.router.navigate(['/registration']);
+        },
+        error: (error) => {
+          console.error('Error during signup:', error);
+          alert(error.error?.message || 'Signup failed.');
+        }
+      });
+    } else {
+      alert('Please fill in all required fields.');
+    }
   }
 }
-
-
-
